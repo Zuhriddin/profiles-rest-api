@@ -32,7 +32,7 @@ class UserProfileMAnager(BaseUserManager):
 
         user.save(using=self._db)
 
-        return user        
+        return user
 
 
 
