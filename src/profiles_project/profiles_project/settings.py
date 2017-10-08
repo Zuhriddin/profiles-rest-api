@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'profiles_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydatabase',
-        'USER': 'mydatabaseuser',
-        'PASSWORD': 'mypassword',
+        'NAME': 'profiles_api_db',
+        'USER': 'postgres',
+        'PASSWORD': 'robin9395',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -124,7 +124,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 
 
 AUTH_USER_MODEL='profiles_api.UserProfile'
