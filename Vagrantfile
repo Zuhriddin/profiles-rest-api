@@ -6,6 +6,7 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
+
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
@@ -13,8 +14,10 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/xenial64"
+  #Accessing internet
 
-  config.vm.network "forwarded_port", host_ip: "127.0.0.1", guest: 8080, host: 8080
+  config.vm.network :forwarded_port, host_ip: "127.0.0.1", guest: 8080, host: 8080
+  config.vm.network :public_network, bridge: 'en0: Wi-Fi (AirPort)'
 
   config.vm.provision "shell", inline: <<-SHELL
     # Update and upgrade the server packages.
@@ -22,6 +25,8 @@ Vagrant.configure("2") do |config|
     sudo apt-get -y upgrade
     # Set Ubuntu Language
     sudo locale-gen en_GB.UTF-8
+    #Installing postgresql
+    sudo apt-get install postgresql postgresql-contrib
     # Install Python, SQLite and pip
     sudo apt-get install -y python3-dev sqlite python-pip
     # Upgrade pip to the latest version.
