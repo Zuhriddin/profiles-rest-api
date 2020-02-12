@@ -12,6 +12,6 @@ urllib3==1.22
 virtualenv==15.1.0
 virtualenv-clone==0.2.6
 whitenoise==3.3.1
-django==1.10.1
+django==1.11.28
 gunicorn==19.7.1
 uWSGI==2.0.15
